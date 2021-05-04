@@ -8,6 +8,7 @@ on:
 
 env:
   RENDER_SERVICE_NAME: "test-portal-master"
+  RENDER_HOST_URL: "https://${RENDER_SERVICE_NAME}-pr-${{github.event.number}}.onrender.com"
 
 jobs:
   build:
@@ -19,4 +20,5 @@ jobs:
         run: |
           BUILT_HOST="https://${RENDER_SERVICE_NAME}-pr-${{github.event.number}}.onrender.com"
           echo $BUILT_HOST
+          echo $RENDER_HOST_URL
           
