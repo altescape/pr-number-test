@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Build Render host URL
         run: |
-          echo $RENDER_HOST_URL
+          echo "RENDER_HOST_URL = ${{$RENDER_HOST_URL}}"
           
