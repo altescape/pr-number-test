@@ -1,4 +1,4 @@
-name: Build URL with PRs number and execute bash script on close PR
+name: Close PR
 
 env:
   RENDER_HOST_URL: "https://test-portal-master-pr-${{github.event.number}}.onrender.com"
