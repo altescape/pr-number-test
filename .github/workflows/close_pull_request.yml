@@ -1,0 +1,22 @@
+name: Build URL with PRs number and execute bash script on close PR
+
+env:
+  RENDER_HOST_URL: "https://test-portal-master-pr-${{github.event.number}}.onrender.com"
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Test built Render host
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip_manage_origins')"
+    steps:
+      - name: Build Render host URL and execute bash script
+        run: |
+          echo "RENDER_HOST_URL = $RENDER_HOST_URL"
+          chmod +x ./deploy/do-something.sh
+          ./deploy/do-something.sh remove $RENDER_HOST_URL
