@@ -10,8 +10,16 @@ on:
       - master
 
 jobs:
+  test:
+    name: A test that passes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait a second...
+        run: sleep 3
+        
   build:
-    name: Test built Render host
+    needs: test
+    name: Output result and execute script
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip_manage_origins')"
     steps:
