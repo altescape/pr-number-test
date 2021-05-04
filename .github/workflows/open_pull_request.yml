@@ -7,29 +7,16 @@ on:
       - master
 
 env:
-  RENDER_SERVICE_NAME: "charity-portal-master"
+  RENDER_SERVICE_NAME: "test-portal-master"
 
 jobs:
   build:
-    name: Add Auth0 origins
+    name: Test built Render host
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip_manage_origins')"
     steps:
-      - name: pr-number-action
-        id: pr-number-action
-        uses: kkak10/pr-number-action@v1.3
-        with:
-          # The GitHub token used to create an authenticated client.
-          github-token: ${{github.token}}
-      
-      - name: Output PR numbers
+      - name: Build Render host URL
         run: |
-          echo "github.event.number: ${{github.event.number}}"
-          echo "steps.pr-number-action.outputs.pr: ${{steps.pr-number-action.outputs.pr}}"
-
-      - name: Add render.com preview host to Auth0 origin
-        run: |
-          echo ${{steps.pr-number-action.outputs.pr}}
-          BUILT_HOST="https://${RENDER_SERVICE_NAME}-pr-${{steps.pr-number-action.outputs.pr}}.onrender.com"
+          BUILT_HOST="https://${RENDER_SERVICE_NAME}-pr-${{github.event.number}}.onrender.com"
           echo $BUILT_HOST
           
