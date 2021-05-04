@@ -18,4 +18,6 @@ jobs:
       - name: Build Render host URL
         run: |
           echo "RENDER_HOST_URL = $RENDER_HOST_URL"
+          chmod +x ./deploy/do-something.sh
+          ./deploy/do-something.sh add $RENDER_HOST_URL
           
