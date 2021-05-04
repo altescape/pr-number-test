@@ -21,16 +21,11 @@ jobs:
         with:
           # The GitHub token used to create an authenticated client.
           github-token: ${{github.token}}
-
-#       - name: Get PR number
-#         uses: actions/github-script@0.3.0
-#         with:
-#           github-token: ${{github.token}}
-#           script: |
-#             const core = require('@actions/core')
-#             const prNumber = context.payload.number;
-#             core.exportVariable('PULL_NUMBER', prNumber);
-#       - uses: actions/checkout@v2
+      
+      - name: Output PR numbers
+        run: |
+          echo "github.event.number: ${{github.event.number}}"
+          echo "steps.pr-number-action.outputs.pr: ${{steps.pr-number-action.outputs.pr}}"
 
       - name: Add render.com preview host to Auth0 origin
         run: |
