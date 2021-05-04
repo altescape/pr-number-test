@@ -1,14 +1,13 @@
 name: Print PR number on open PR
 
+env:
+  RENDER_HOST_URL: "https://test-portal-master-pr-${{github.event.number}}.onrender.com"
+
 on:
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
       - master
-
-env:
-  RENDER_SERVICE_NAME: "test-portal-master"
-  RENDER_HOST_URL: "https://${RENDER_SERVICE_NAME}-pr-${{github.event.number}}.onrender.com"
 
 jobs:
   build:
@@ -18,7 +17,5 @@ jobs:
     steps:
       - name: Build Render host URL
         run: |
-          BUILT_HOST="https://${RENDER_SERVICE_NAME}-pr-${{github.event.number}}.onrender.com"
-          echo $BUILT_HOST
           echo $RENDER_HOST_URL
           
