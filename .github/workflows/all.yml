@@ -8,7 +8,11 @@ on:
     branches:
       - master
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: 
+      - opened
+      - reopened
+      - synchronize
+      - closed
     branches:
       - master
       
