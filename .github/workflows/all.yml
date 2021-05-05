@@ -25,8 +25,18 @@ jobs:
       - name: Wait a second...
         run: sleep 1
         
+  setScriptParam:
+    name: Set script parameter
+    runs-on: ubuntu-latest
+    steps:
+      - name: set env to closed
+        if: ${{ github.event.action == 'closed' }}
+        run: echo "SCRIPT_PARAM=remove" >> $GITHUB_ENV
+        
   build:
-    needs: test1
+    needs:
+      - test1
+      - setScriptParam
     name: Output result and execute script
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip_manage_origins')"
@@ -59,13 +69,6 @@ jobs:
   outputInfo:
     runs-on: ubuntu-latest
     steps:
-      - name: set env to closed
-        if: ${{ github.event.action == 'closed' }}
-        env:
-          SCRIPT_PARAM: remove
-        run: |
-          echo "SCRIPT_PARAM=remove" >> $GITHUB_ENV
-          echo "Setting SCRIPT_PARAM to $SCRIPT_PARAM"
       - name: Output information
         run: |
           echo "github.event: ${{ github.event }}"
