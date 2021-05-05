@@ -64,6 +64,7 @@ jobs:
         env:
           SCRIPT_PARAM: remove
         run: |
+          echo "SCRIPT_PARAM=remove" >> $GITHUB_ENV
           echo "Setting SCRIPT_PARAM to $SCRIPT_PARAM"
       - name: Output information
         run: |
