@@ -59,7 +59,7 @@ jobs:
   outputInfo:
     runs-on: ubuntu-latest
     steps:
-      - name: set env to add
+      - name: set env to closed
         if: ${{ github.event.action == 'closed' }}
         env:
           SCRIPT_PARAM: remove
