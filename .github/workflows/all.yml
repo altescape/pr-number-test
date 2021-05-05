@@ -61,9 +61,10 @@ jobs:
     steps:
       - name: set env to add
         if: ${{ github.event.action == 'closed' }}
+        env:
+          SCRIPT_PARAM: remove
         run: |
-          echo "Setting SCRIPT_PARAM to remove"
-          ${{ env.SCRIPT_PARAM = remove }}
+          echo "Setting SCRIPT_PARAM to $SCRIPT_PARAM"
       - name: Output information
         run: |
           echo "github.event: ${{ github.event }}"
