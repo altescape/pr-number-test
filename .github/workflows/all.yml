@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "github.event: ${{ github.event }}"
           echo "github.event_name: ${{ github.event_name }}"
-          echo "github.event.type: ${{ github.event.type }}"
+          echo "github.event.action: ${{ github.event.action }}"
           echo "RENDER_HOST_URL = $RENDER_HOST_URL"
           chmod +x ./deploy/do_something.sh
           ./deploy/do_something.sh add $RENDER_HOST_URL
