@@ -1,4 +1,4 @@
-name: Open PR
+name: Push to master
 
 env:
   RENDER_HOST_URL: "https://test-portal-master-pr-${{github.event.number}}.onrender.com"
