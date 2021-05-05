@@ -25,7 +25,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Render host URL and execute bash script
         run: |
-          echo "github: ${{ github }}"
+          echo "github.event: ${{ github.event }}"
+          echo "github.event_name: ${{ github.event_name }}"
           echo "RENDER_HOST_URL = $RENDER_HOST_URL"
           chmod +x ./deploy/do_something.sh
           ./deploy/do_something.sh add $RENDER_HOST_URL
