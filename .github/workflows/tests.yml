@@ -26,7 +26,6 @@ jobs:
       - name: Build Render host URL and execute bash script
         run: |
           echo "github: ${{ github }}"
-          echo "context: ${{ context }}"
           echo "RENDER_HOST_URL = $RENDER_HOST_URL"
           chmod +x ./deploy/do_something.sh
           ./deploy/do_something.sh add $RENDER_HOST_URL
