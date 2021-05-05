@@ -2,7 +2,6 @@ name: Push, PR with conditional
 
 env:
   RENDER_HOST_URL: "https://test-portal-master-pr-${{github.event.number}}.onrender.com"
-  SCRIPT_PARAM: ${{ github.event.action == 'closed' }}
 
 on:
   push:
@@ -59,6 +58,15 @@ jobs:
   outputInfo:
     runs-on: ubuntu-latest
     steps:
+      - name: set env to add
+        if: ${{ github.event.action == 'closed' }}
+        env:
+          SCRIPT_PARAM: add
+      - name: set env to remove
+        if: ${{ github.event.action != 'closed' }}
+        env:
+          SCRIPT_PARAM: remove
+          
       - name: Output information
         run: |
           echo "github.event: ${{ github.event }}"
