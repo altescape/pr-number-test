@@ -1,4 +1,4 @@
-[![Unit & UI Tests](https://github.com/altescape/pr-number-test/actions/workflows/tests.yml/badge.svg)](https://github.com/altescape/pr-number-test/actions/workflows/tests.yml)
+[![Unit & UI Tests](https://github.com/altescape/pr-number-test/actions/workflows/tests.yml/badge.svg)](https://github.com/altescape/pr-number-test/actions/workflows/all.yml)
 
 # pr-number-test
 
