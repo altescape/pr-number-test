@@ -1,6 +1,8 @@
-[![Unit & UI Tests](https://github.com/altescape/pr-number-test/actions/workflows/tests.yml/badge.svg)](https://github.com/altescape/pr-number-test/actions/workflows/all.yml)
+[![Push, PR with conditional](https://github.com/altescape/pr-number-test/actions/workflows/all.yml/badge.svg)](https://github.com/altescape/pr-number-test/actions/workflows/all.yml)
 
 # pr-number-test
+
+This is a repo for testing GitHub actions.
 
 - step 1
 - step 2
